@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Allerta|Montserrat" rel="stylesheet">
+    <title>Precios de tus mejores guitarras !! </title>
+    <link rel="stylesheet" href="css/invie.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="precios">
+    <div class="background">
+      <header id="header" class = "header contenedor "> <!--header-->
+      <figure class = "logotipo"> <!--logo-->
+        <img src="images/invie.png" width="186" height="60" alt = "Invie logotipo"/>
+      </figure>
+      <span class="burger-button icon-menu" id="burger-button"></span>
+      <nav class = "menu" id="menu"> <!--Menu-->
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="index.html#guitarras">Guitarras</a>
+          </li>
+          <li>
+            <a href="precios.html">Precios</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    </div>
+
+    <section class="tabla">
+      <div class="contenedor">
+      <table>
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Precio</th>
+              <th>Descripción</th>
+              <th>Modelo</th>
+              <th>Precio</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Invie classic</td>
+              <td>$10,000.00</td>
+              <td>Una guitarra muy pro</td>
+              <td>Invie classic</td>
+              <td>$10,000.00</td>
+              <td>Una guitarra muy pro</td>
+            </tr>
+            <tr>
+              <td>Invie classic</td>
+              <td>$10,000.00</td>
+              <td>Una guitarra muy pro</td>
+              <td>Invie classic</td>
+              <td>$10,000.00</td>
+              <td>Una guitarra muy pro</td>
+            </tr>
+            <tr>
+              <td>Invie classic</td>
+              <td>$10,000.00</td>
+              <td>Una guitarra muy pro</td>
+              <td>Invie classic</td>
+              <td>$10,000.00</td>
+              <td>Una guitarra muy pro</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    </section>
+
+    <footer class = "footer"><!--FOOTER CONTACTO-->
+      <div class="contenedor">
+        <div class="contacto"> <!--CONTACTO-->
+           <img src = "images/invie-white.png" alt="logotipo blanco" />
+           <a href="tel:+5535867465"><strong>Telefono</strong> <span>3012342143</span></a>
+           <a href="mailto: contacto@invie.com" target="_blank"><strong>E-mail</strong> <span>contacto@invie.com<span></a>
+        </div>
+        <form class="formulario"> <!--FORMULARIO-->
+          <div class="col1">
+          <label for="nombre">Tu nombre</label>
+          <input type= "text" required="true" placeholder="invie" id = "nombre" name = "nombre"/>
+          <label for="email">E-mail</label>
+          <input type="text" required="true" placeholder="correo" id = "email" name = "email"/>
+          <div class="sexo"> <!--Sexo-->
+            <label for="mujer">
+              <input type="radio" id = "mujer" name = "sexo" value="mujer" checked/> Mujer
+            </label>
+            <label for="hombre">
+              <input type="radio" id = "hombre" name = "sexo" value="hombre"/> Hombre
+            </label>
+          </div>
+          <div class="intereses">
+            <label for="cotizacion">
+              <input type="checkbox" id = "cotizacion" name = "intereses" value="cotizacion" checked/>Cotización
+            </label>
+            <label for="reclamos">
+              <input type="checkbox" id = "reclamos" name = "intereses" value="reclamos"/>Reclamos
+            </label>
+            <label for="comentarios">
+              <input type="checkbox" id = "comentarios" name = "intereses" value="comentarios"/>Comentarios
+            </label>
+            <label for="otros">
+              <input type="checkbox" id = "otros" name = "intereses" value="otros"/>Otros
+            </label>
+          </div>
+        </div>
+          <div class="col2">
+            <label for="comentarios">Comentarios</label>
+            <textarea name = "comentarios" id="comentarios" cols="30" rows="5"></textarea>
+            <input class = "button" type="submit" value="Enviar"/>
+          </div>
+        </form>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
+    <script>
+      var $burgerButton = document.getElementById("burger-button");
+      var $menu = document.getElementById("menu");
+      $burgerButton.addEventListener("touchstart", toggleMenu);
+      $burgerButton.addEventListener("click", toggleMenu);
+
+      function toggleMenu(){
+        $menu.classList.toggle("active");
+      };
+      function showMenu(){
+        $menu.classList.add("active");
+      };
+      function hideMenu(){
+        $menu.classList.remove("active");
+      };
+
+
+
+
+      // Media queri con JS
+      var scroll = window.matchMedia("(max-width: 560px)");
+      scroll.addListener(scrollMedia);
+
+       scrollMedia();//lo agregamos para que cuando se cargue la página, se ejecute y vea o no el icono
+
+      function scrollMedia(){
+        if(scroll.matches == true)
+        {
+          console.log("SIIIIIIII");
+          $burgerButton.classList.add("icon-menu");
+          $burgerButton.classList.add("burger-button");
+        }
+        else
+        {
+          $burgerButton.classList.remove("icon-menu");
+          $burgerButton.classList.remove("burger-button");
+          console.log("noooo");
+        }
+      }
+
+      // optimizar imagenes
+
+      var bLazy = new Blazy({
+        selector: "img"
+      });
+
+      // gestures
+
+      var $body = document.body;
+
+      var gestosMenu = new Hammer($body);
+
+      gestosMenu.on('swiperight', showMenu);
+      gestosMenu.on("swipeleft", hideMenu);
+
+
+
+    </script>
+
+
+  </body>
+</html>
