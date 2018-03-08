@@ -113,60 +113,44 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.8.2/blazy.min.js"></script>
   <script>
-    var $burgerButton = document.getElementById("burger-button");
-    var $menu = document.getElementById("menu");
-    $burgerButton.addEventListener("touchstart", toggleMenu);
-    $burgerButton.addEventListener("click", toggleMenu);
-
-    function toggleMenu(){
-      $menu.classList.toggle("active");
-    };
-    function showMenu(){
-      $menu.classList.add("active");
-    };
-    function hideMenu(){
-      $menu.classList.remove("active");
-    };
-
-
-
-
-    // Media queri con JS
-    var scroll = window.matchMedia("(max-width: 560px)");
-    scroll.addListener(scrollMedia);
-
-     scrollMedia();//lo agregamos para que cuando se cargue la página, se ejecute y vea o no el icono
-
-    function scrollMedia(){
-      if(scroll.matches == true)
-      {
-        console.log("SIIIIIIII");
-        $burgerButton.classList.add("icon-menu");
-        $burgerButton.classList.add("burger-button");
+    var consulta = window.matchMedia('(max-width: 500px)');
+      consulta.addListener(mediaQuery);
+      var $burguerButton = document.getElementById('burguer-button');
+      var $menu = document.getElementById('menu');
+      function toggleMenu(){
+        $menu.classList.toggle('active')
+      };
+      function showMenu(){
+        $menu.classList.add('active');
+      };
+      function hideMenu(){
+        $menu.classList.remove('active');
+      };
+      function mediaQuery() {
+        if (consulta.matches) {
+          // si se cumple hagamos esto
+          console.log('se cumplió la condicion');
+          $burguerButton.addEventListener('touchstart', toggleMenu);
+        } else {
+          $burguerButton.removeEventListener('touchstart', toggleMenu);
+          // si no se cumple hagamos esto
+          console.log('no se cumplió la condicion');
+        }
       }
-      else
-      {
-        $burgerButton.classList.remove("icon-menu");
-        $burgerButton.classList.remove("burger-button");
-        console.log("noooo");
-      }
-    }
-
-    // optimizar imagenes
-
-    var bLazy = new Blazy({
-      selector: "img"
-    });
-
-    // gestures
-
-    var $body = document.body;
-
-    var gestosMenu = new Hammer($body);
-
-    gestosMenu.on('swiperight', showMenu);
-    gestosMenu.on("swipeleft", hideMenu);
-
+      mediaQuery();
+      // lazy loading
+      var bLazy = new Blazy({
+          selector: 'img'
+      });
+      // $burguerButton.addEventListener('touchstart', toggleMenu);
+      // function toggleMenu(){
+      //   $menu.classList.toggle('active')
+      // };
+      // Gestos touch
+      var $body = document.body;
+      var gestos = new Hammer($body);
+      gestos.on('swipeleft', hideMenu);
+      gestos.on('swiperight', showMenu);
 
 
   </script>
