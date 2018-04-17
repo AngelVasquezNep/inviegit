@@ -270,7 +270,6 @@ input:focus, textarea:focus {
 
 .footer .contenedor {
   display: flex;
-  justify-content: space-between;
 }
 
 
